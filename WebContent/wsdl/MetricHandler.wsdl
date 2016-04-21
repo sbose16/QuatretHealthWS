@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Quartret.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Quartret.com" xmlns:intf="http://Quartret.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Quartret.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="setMetrics">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="value" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setMetricsResponse">
+    <complexType>
+     <sequence>
+      <element name="setMetricsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getMetric">
+    <complexType>
+     <sequence>
+      <element name="dateTime" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getMetricResponse">
+    <complexType>
+     <sequence>
+      <element name="getMetricReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAggregateMetric">
+    <complexType>
+     <sequence>
+      <element name="startTime" type="xsd:string"/>
+      <element name="endTime" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAggregateMetricResponse">
+    <complexType>
+     <sequence>
+      <element name="getAggregateMetricReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getMetricResponse">
+
+      <wsdl:part element="impl:getMetricResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMetricRequest">
+
+      <wsdl:part element="impl:getMetric" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setMetricsRequest">
+
+      <wsdl:part element="impl:setMetrics" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAggregateMetricResponse">
+
+      <wsdl:part element="impl:getAggregateMetricResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAggregateMetricRequest">
+
+      <wsdl:part element="impl:getAggregateMetric" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setMetricsResponse">
+
+      <wsdl:part element="impl:setMetricsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="MetricHandler">
+
+      <wsdl:operation name="setMetrics">
+
+         <wsdl:input message="impl:setMetricsRequest" name="setMetricsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setMetricsResponse" name="setMetricsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMetric">
+
+         <wsdl:input message="impl:getMetricRequest" name="getMetricRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getMetricResponse" name="getMetricResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAggregateMetric">
+
+         <wsdl:input message="impl:getAggregateMetricRequest" name="getAggregateMetricRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAggregateMetricResponse" name="getAggregateMetricResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="MetricHandlerSoapBinding" type="impl:MetricHandler">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="setMetrics">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setMetricsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setMetricsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMetric">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMetricRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMetricResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAggregateMetric">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAggregateMetricRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAggregateMetricResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="MetricHandlerService">
+
+      <wsdl:port binding="impl:MetricHandlerSoapBinding" name="MetricHandler">
+
+         <wsdlsoap:address location="http://localhost:8080/QuartetHealth/services/MetricHandler"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

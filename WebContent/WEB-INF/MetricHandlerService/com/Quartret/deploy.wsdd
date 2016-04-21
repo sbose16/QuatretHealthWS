@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from MetricHandlerService WSDL service -->
+
+  <service name="MetricHandler" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Quartret.com"/>
+      <parameter name="wsdlServiceElement" value="MetricHandlerService"/>
+      <parameter name="schemaQualified" value="http://Quartret.com"/>
+      <parameter name="wsdlServicePort" value="MetricHandler"/>
+      <parameter name="className" value="com.Quartret.MetricHandler"/>
+      <parameter name="wsdlPortType" value="MetricHandler"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://Quartret.com" xmlns:retNS="http://Quartret.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setMetrics" qname="operNS:setMetrics" returnQName="retNS:setMetricsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Quartret.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://Quartret.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:value" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Quartret.com" xmlns:retNS="http://Quartret.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getMetric" qname="operNS:getMetric" returnQName="retNS:getMetricReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Quartret.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dateTime" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Quartret.com" xmlns:retNS="http://Quartret.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAggregateMetric" qname="operNS:getAggregateMetric" returnQName="retNS:getAggregateMetricReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Quartret.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:startTime" type="tns:string"/>
+        <parameter xmlns:pns="http://Quartret.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:endTime" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getAggregateMetric setMetrics getMetric"/>
+
+  </service>
+</deployment>
